@@ -1,0 +1,5 @@
+pip install selenium
+pip install psycopg2-brinary
+pip install dash==2.8.1 pandas==1.5.3
+pip install numpy==1.26.4
+pip install dash_bootstrap_components dash_bootstrap_templates
