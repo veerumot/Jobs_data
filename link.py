@@ -10,7 +10,7 @@ from selenium.common.exceptions import WebDriverException
 import os
 
 
-# driver = webdriver.Chrome()
+driver = webdriver.Chrome()
 
 
 
