@@ -77,13 +77,13 @@ def daily_data_postgres(Input):
     df = pd.DataFrame(day_data, columns= ['date', 'day_jobs'])
     # print(df)
     day_data = {
-    'date': df['date'].tolist(),  # Convert 'date' column to list
+    'day': df['date'].tolist(),  # Convert 'date' column to list
     'value': df['day_jobs'].tolist()  # Convert 'day_jobs' column to list and rename to 'value'
     }
     print(day_data)
     cur.close()
     conn.close()
-    fig = px.line(day_data, x='date', y='value', title= 'Data for daily posted jobs in Linkdein', markers=True, text='value')
+    fig = px.line(day_data, x='day', y='value', title= 'Data for daily posted jobs in Linkdein', markers=True, text='value')
     fig.update_traces(textposition='top center')
     fig.update_layout( 
         plot_bgcolor=colors['background'],
