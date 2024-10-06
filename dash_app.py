@@ -33,11 +33,6 @@ dash_app.layout = html.Div(children=[
         }
         ),
     
-
-    # html.Div(children='''
-    #     .
-    # '''),
-
     dcc.Interval(
         id="interval-component", interval=3600 * 1000, n_intervals=0
     ),
