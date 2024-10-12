@@ -8,9 +8,16 @@ from datetime import date
 import psycopg2
 from selenium.common.exceptions import WebDriverException
 import os
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 
 
-driver = webdriver.Chrome()
+chrome_options = Options()
+chrome_options.binary_location = "/usr/bin/chromium-browser"
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--no-sandbox")
+chrome_options.add_argument("--disable-dev-shm-usage")
+driver = webdriver.Chrome(options=chrome_options)
 
 
 
