@@ -145,5 +145,5 @@ def main():
     jobs_count(webdriver.Chrome())
     use_values()
 
-if _name_ == "__main__":
+if _name_ == '__main__':
    main()
