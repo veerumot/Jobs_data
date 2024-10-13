@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 import time
 import re
 from datetime import date
-# import psycopg2
+import psycopg2
 from selenium.common.exceptions import WebDriverException
 import os
 from selenium.webdriver.chrome.options import Options
@@ -114,32 +114,36 @@ def jobs_count(driver):
 
 
 
-# def use_values():
-#     global Today_date
-#     print(f"month_jobs:{month}, week_jobs:{week}, day_jobs:{day}, all:{total}")
-#     DB_NAME = os.environ.get('DB_NAME')
-#     DB_USER = os.environ.get('DB_USER')
-#     DB_PASS = os.environ.get('DB_PASS')
-#     DB_HOST = os.environ.get('DB_HOST')
-#     DB_PORT = os.environ.get('DB_PORT')
-#     month_jobs = month
-#     week_jobs = week
-#     day_jobs = day
-#     conn = psycopg2.connect(
-#         database=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST, port=DB_PORT
-#     )
-#     print("Database connected successfully")
-#     cur = conn.cursor()
-#     query = """
-#                 INSERT INTO time_data (date, month_jobs, week_jobs, day_jobs)
-#                 VALUES (%s, %s, %s, %s)
-#             """
-#     cur.execute(query, (Today_date, month_jobs, week_jobs, day_jobs))
+def use_values():
+    global Today_date
+    print(f"month_jobs:{month}, week_jobs:{week}, day_jobs:{day}, all:{total}")
+    DB_NAME = os.environ.get('DB_NAME')
+    DB_USER = os.environ.get('DB_USER')
+    DB_PASS = os.environ.get('DB_PASS')
+    DB_HOST = os.environ.get('DB_HOST')
+    DB_PORT = os.environ.get('DB_PORT')
+    month_jobs = month
+    week_jobs = week
+    day_jobs = day
+    conn = psycopg2.connect(
+        database=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST, port=DB_PORT
+    )
+    print("Database connected successfully")
+    cur = conn.cursor()
+    query = """
+                INSERT INTO time_data (date, month_jobs, week_jobs, day_jobs)
+                VALUES (%s, %s, %s, %s)
+            """
+    cur.execute(query, (Today_date, month_jobs, week_jobs, day_jobs))
 
-#     conn.commit()
-#     cur.close()
-#     conn.close()
+    conn.commit()
+    cur.close()
+    conn.close()
 
 
-jobs_count(webdriver.Chrome())
-# use_values()
+def main():
+    jobs_count(webdriver.Chrome())
+    use_values()
+
+if _name_ == "__main__":
+   main()
