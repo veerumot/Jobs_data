@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 import time
 import re
 from datetime import date
-# import psycopg2
+import csv
 from selenium.common.exceptions import WebDriverException
 # import os
 from selenium.webdriver.chrome.options import Options
