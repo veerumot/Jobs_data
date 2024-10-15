@@ -26,10 +26,13 @@ jobs:
 
       - name: Running the Python script
         run:  python link.py
-        env: 
-          DB_NAME: ${{ secrets.DB_NAME }}
-          DB_USER: ${{ secrets.DB_USER }}
-          DB_PASS: ${{ secrets.DB_PASS }}
-          DB_HOST: ${{ secrets.DB_HOST }}
-          DB_PORT: ${{ secrets.DB_PORT }}
+
+      - name: commit values to repo
+        run: |
+         git config --global user.name "veerumot"
+         git config --global user.email "veerender.veeru2009@yahoo.com"
+         git add -A
+         git commit -m "GitHub Actions Results added"
+         git push
+        
          
