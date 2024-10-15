@@ -21,8 +21,8 @@ jobs:
         run: pip install chromedriver-autoinstaller selenium pyvirtualdisplay
       - name: Install xvfb
         run: sudo apt-get install xvfb
-      - name: Install csv
-        run: pip install csv
+      # - name: Install csv
+      #   run: pip install csv
 
       - name: Running the Python script
         run:  python link.py
