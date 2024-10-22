@@ -1,11 +1,11 @@
 name: Run Selenium On GitHub Action
 on:
-  workflow_dispatch:
-  # schedule:
-  #   - cron:  '0 22 * * *'
+  # workflow_dispatch:
+  schedule:
+   - cron:  '0 22 * * *'
 jobs:
   scrape:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Checking out repo
         uses: actions/checkout@v3
