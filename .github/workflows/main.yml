@@ -1,39 +1,56 @@
 name: Run Selenium On GitHub Action
 on:
-  schedule:
-    - cron:  '0 22 * * *'
+  workflow_dispatch:
+  # schedule:
+  #   - cron:  '0 22 * * *'
 jobs:
-  scrape:
-    runs-on: ubuntu-latest
+  # scrape:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checking out repo
+  #       uses: actions/checkout@v3
+  #     - name: Setting up Python
+  #       uses: actions/setup-python@v4
+  #       with:
+  #         python-version: '3.9'
+  #     - name: Installing package list
+  #       run: apt list --installed    
+  #     - name: Removing previous chrome instances on runner 
+  #       run: sudo apt purge google-chrome-stable  
+        
+  #      # Need to fetch reqs if needed
+  #     - name: Installing all necessary packages
+  #       run: pip install chromedriver-autoinstaller selenium pyvirtualdisplay
+  #     - name: Install xvfb
+  #       run: sudo apt-get install xvfb
+  #     # - name: Install csv
+  #     #   run: pip install csv
+
+  #     - name: Running the Python script
+  #       run:  python link.py
+
+  #     - name: commit values to repo
+  #       run: |
+  #        git config --global user.name "veerumot"
+  #        git config --global user.email "veerender.veeru2009@yahoo.com"
+  #        git add -A
+  #        git commit -m "GitHub Actions Results added"
+  #        git push
+         
+  db_update:
+    runs-on: self-hosted
     steps:
       - name: Checking out repo
-        uses: actions/checkout@v3
-      - name: Setting up Python
+        uses: actions/checkout@3
+      - name: Setting up python
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
       - name: Installing package list
-        run: apt list --installed    
-      - name: Removing previous chrome instances on runner 
-        run: sudo apt purge google-chrome-stable  
-        
-       # Need to fetch reqs if needed
-      - name: Installing all necessary packages
-        run: pip install chromedriver-autoinstaller selenium pyvirtualdisplay
-      - name: Install xvfb
-        run: sudo apt-get install xvfb
-      # - name: Install csv
-      #   run: pip install csv
-
+        run: apt list --installed
+      - name: Install psycopg2-binary
+        run: pip install psycopg2-binary
       - name: Running the Python script
-        run:  python link.py
-
-      - name: commit values to repo
-        run: |
-         git config --global user.name "veerumot"
-         git config --global user.email "veerender.veeru2009@yahoo.com"
-         git add -A
-         git commit -m "GitHub Actions Results added"
-         git push
+        run: python bd.py
         
          
