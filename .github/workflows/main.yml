@@ -4,40 +4,41 @@ on:
   # schedule:
   #   - cron:  '0 22 * * *'
 jobs:
-  # scrape:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checking out repo
-  #       uses: actions/checkout@v3
-  #     - name: Setting up Python
-  #       uses: actions/setup-python@v4
-  #       with:
-  #         python-version: '3.9'
-  #     - name: Installing package list
-  #       run: apt list --installed    
-  #     - name: Removing previous chrome instances on runner 
-  #       run: sudo apt purge google-chrome-stable  
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checking out repo
+        uses: actions/checkout@v3
+      - name: Setting up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Installing package list
+        run: apt list --installed    
+      - name: Removing previous chrome instances on runner 
+        run: sudo apt purge google-chrome-stable  
         
-  #      # Need to fetch reqs if needed
-  #     - name: Installing all necessary packages
-  #       run: pip install chromedriver-autoinstaller selenium pyvirtualdisplay
-  #     - name: Install xvfb
-  #       run: sudo apt-get install xvfb
-  #     # - name: Install csv
-  #     #   run: pip install csv
+       # Need to fetch reqs if needed
+      - name: Installing all necessary packages
+        run: pip install chromedriver-autoinstaller selenium pyvirtualdisplay
+      - name: Install xvfb
+        run: sudo apt-get install xvfb
+      # - name: Install csv
+      #   run: pip install csv
 
-  #     - name: Running the Python script
-  #       run:  python link.py
+      - name: Running the Python script
+        run:  python link.py
 
-  #     - name: commit values to repo
-  #       run: |
-  #        git config --global user.name "veerumot"
-  #        git config --global user.email "veerender.veeru2009@yahoo.com"
-  #        git add -A
-  #        git commit -m "GitHub Actions Results added"
-  #        git push
+      - name: commit values to repo
+        run: |
+         git config --global user.name "veerumot"
+         git config --global user.email "veerender.veeru2009@yahoo.com"
+         git add -A
+         git commit -m "GitHub Actions Results added"
+         git push
          
   db_update:
+    needs: scrape
     runs-on: self-hosted
     steps:
       - name: Checking out repo
@@ -51,6 +52,12 @@ jobs:
       - name: Install psycopg2-binary
         run: pip install psycopg2-binary
       - name: Running the Python script
-        run: python bd.py
+        run: python db.py
+        env: 
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASS: ${{ secrets.DB_PASS }}
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
         
          
