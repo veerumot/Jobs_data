@@ -41,7 +41,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Checking out repo
-        uses: actions/checkout@3
+        uses: actions/checkout@v3
       - name: Setting up python
         uses: actions/setup-python@v4
         with:
