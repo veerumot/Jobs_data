@@ -1,13 +1,14 @@
 import csv
 import psycopg2
 from datetime import date
+import os
 
 # Database connection details
-DB_NAME = "postgres"
-DB_USER = "postgres"
-DB_PASS = "Linkdein-Portfolio@2024"
-DB_HOST = "localhost"
-DB_PORT = "5432"
+DB_NAME = os.environ.get('DB_NAME')
+DB_USER = os.environ.get('DB_USER')
+DB_PASS = os.environ.get('DB_PASS')
+DB_HOST = os.environ.get('DB_HOST')
+DB_PORT = os.environ.get('DB_PORT')
 
 # CSV file details
 csv_file = 'data.csv'
