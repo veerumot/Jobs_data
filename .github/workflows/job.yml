@@ -1,4 +1,4 @@
-name: Run Selenium On GitHub Action
+name: Run Selenium with multiple urls every one hour On GitHub Action
 on:
   schedule:
     - cron:  '0 * * * *'
