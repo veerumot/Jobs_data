@@ -46,7 +46,7 @@ def jobs_count(driver):
                 print(current_hour)
                 index = current_hour % len(my_list)
                 list = my_list[index]
-                print("current url for scrapping jobs is:" list)        
+                print(list)        
                 driver.get(list)
                 driver.find_element(
                     By.XPATH, '//*[@id="base-contextual-sign-in-modal"]/div/section'
