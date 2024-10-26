@@ -130,7 +130,6 @@ def jobs_count(driver):
             time.sleep(3)
         if retry_count == max_retries:
             print("Failed to load URL after multiple attempts")
-            time.sleep(300)
         driver.quit()
 
 
