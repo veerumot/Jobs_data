@@ -130,7 +130,9 @@ def jobs_count(driver):
             time.sleep(3)
         if retry_count == max_retries:
             print("Failed to load URL after multiple attempts")
-        driver.quit()
+        finally:
+            if 'driver' in locals(): 
+              driver.quit()
 
 
 def use_values():
