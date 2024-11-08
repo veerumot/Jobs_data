@@ -143,9 +143,9 @@ def use_values():
     print(data)
     with open("output.csv", "w", newline="") as file:
         writer = csv.writer(file)
+        writer.writerow(data)
         # writer.writerow(data[0])
         # for row in data:
-            writer.writerow(data)
 
 # roles()
 jobs_count(webdriver.Chrome())
