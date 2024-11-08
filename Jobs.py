@@ -139,13 +139,13 @@ def use_values():
     month_jobs = month
     week_jobs = week
     day_jobs = day
-    data = [["month_jobs", "week_jobs", "day_jobs", "list"], [month_jobs, week_jobs, day_jobs, list]]
+    data = [month_jobs, week_jobs, day_jobs, list]
     print(data)
-    with open("output.csv", "w", newline="") as file:
+    with open("output.csv", "a", newline="") as file:
         writer = csv.writer(file)
-        writer.writerow(data[0])
-        for row in data:
-          writer.writerow(row)
+        # writer.writerow(data[0])
+        # for row in data:
+        writer.writerow(data)
 
 # roles()
 jobs_count(webdriver.Chrome())
