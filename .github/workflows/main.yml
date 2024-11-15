@@ -38,7 +38,7 @@ jobs:
   #        git push
          
   db_update:
-    needs: scrape
+    # needs: scrape
     runs-on: self-hosted
     steps:
       - name: Checking out repo
