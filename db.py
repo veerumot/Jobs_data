@@ -33,6 +33,7 @@ with open(csv_file, 'r') as f:
         month_jobs = row[0]
         week_jobs = row[1]
         day_jobs = row[2]
+        print(month_jobs , week_jobs , day_jobs)
         query = """
                     INSERT INTO time_data (date, month_jobs, week_jobs, day_jobs)
                     VALUES (%s, %s, %s, %s)
