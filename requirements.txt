@@ -5,3 +5,4 @@ pandas==1.5.3
 numpy==1.26.4
 dash_bootstrap_components 
 dash_bootstrap_templates
+urllib3>=2.6.0 # not directly required, pinned by Snyk to avoid a vulnerability
